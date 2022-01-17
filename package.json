@@ -8,7 +8,8 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "uuid": "latest"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",

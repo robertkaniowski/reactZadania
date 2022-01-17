@@ -2,3 +2,21 @@
   font-family: sans-serif;
   text-align: center;
 }
+.singleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid blue;
+  padding: 10px;
+}
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+.form {
+  margin-top: 20px;
+  background-color: darkgray;
+  padding: 12px;
+}

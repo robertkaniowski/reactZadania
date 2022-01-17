@@ -1,39 +1,61 @@
-import React, { Component } from "react";
+import React from "react";
 import SingleRatingStars from "../singleRatingsStar/components";
+import AddRating from "../addRatingStars/components";
 class RatingStars extends React.Component {
   state = {
     ratingData: [
-      { name: "Jan", points: 22 },
-      { name: "Kasia", points: 15 },
-      { name: "Dawid", points: 5 }
+      { id: 0, title: "Jan", points: 22 },
+      { id: 1, title: "Kasia", points: 15 },
+      { id: 2, title: "Dawid", points: 5 }
     ]
   };
-  handleUpdateBox = (indexToUpadte, ratingData) => {
+  handleUpdateBox = (IdToUpadte, UpdateData) => {
     this.setState((prevState) => {
-      const ratingData = prevState.ratingData.map((timebox, index) =>
-        index === indexToUpadte ? ratingData : timebox
+      const ratingData = prevState.ratingData.map((singleRating) =>
+        singleRating.id === IdToUpadte ? UpdateData : singleRating
       );
+      return { ratingData };
+    });
+  };
+  addRating = (newdata) => {
+    this.setState((prevState) => {
+      const ratingData = [...prevState.ratingData, newdata];
+      return { ratingData };
+    });
+  };
+  handleCreate = (createdData) => {
+    this.addRating(createdData);
+  };
+  removeData = (indexRemove) => {
+    this.setState((prevState) => {
+      const ratingData = prevState.ratingData.filter(
+        (singleRating) => singleRating.id !== indexRemove
+      );
+      console.log(ratingData);
       return { ratingData };
     });
   };
   render() {
     return (
       <>
-        {this.state.ratingData.map((single, index) => (
+        <h2>Lista Opinii:</h2>
+        {this.state.ratingData.map((singleRating, index) => (
           <SingleRatingStars
             key={index}
-            indexElelment={index}
-            name={single.name}
-            points={single.points}
+            indexElelment={singleRating.id}
+            title={singleRating.title}
+            points={singleRating.points}
             onUpdated={(value) =>
-              this.handleUpdateBox(index, {
-                ...ratingData,
-                name: name,
+              this.handleUpdateBox(singleRating.id, {
+                ...singleRating,
+                title: singleRating.title,
                 points: value.points
               })
             }
+            onHandleDelete={() => this.removeData(singleRating.id)}
           />
         ))}
+        <AddRating onCreate={this.handleCreate} />
       </>
     );
   }

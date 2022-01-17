@@ -1,16 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 // import
 function SingleRatingStars(props) {
-  const { name, points, onUpdated } = props;
+  const { indexElelment, title, points, onUpdated, onHandleDelete } = props;
 
   const handleUpdatePoints = (event) => {
-    onUpdated({ name: name, points: event.target.value });
+    onUpdated({ title: title, points: event.target.value });
+  };
+  const handleDeleteItem = (event) => {
+    onHandleDelete({ index: indexElelment });
   };
   return (
-    <div>
-      <p>{name}</p>
-      <label>pkt: {}</label>
-      <input value={points} onChange={this.handleUpdatePoints} type="number" />
+    <div className="singleBox">
+      <p>Imie: {title}</p>
+      <label>
+        pkt:
+        <input
+          defaultValue={points}
+          onChange={(value) => handleUpdatePoints(value)}
+          type="number"
+        />
+      </label>
+      <div onClick={(indexElelment) => handleDeleteItem(indexElelment)}>
+        usun
+      </div>
     </div>
   );
 }

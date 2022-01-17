@@ -6,8 +6,6 @@ import RatingStars from "./components/RatingStars/components";
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
       <Router>
         <div>
           <nav>
@@ -19,7 +17,7 @@ export default function App() {
                 <Link to="/findme">Use Geo</Link>
               </li>
               <li>
-                <Link to="/users">Users</Link>
+                <Link to="/AuthToken">AuthToken</Link>
               </li>
             </ul>
           </nav>
@@ -28,9 +26,7 @@ export default function App() {
             <Route path="/findme">
               <UseGeo />
             </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
+            <Route path="/AuthToken">{/* <AuthToken /> */}</Route>
             <Route path="/">
               <RatingStars />
             </Route>
@@ -39,11 +35,4 @@ export default function App() {
       </Router>
     </div>
   );
-}
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
